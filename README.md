@@ -1,4 +1,4 @@
-# 💖 Love Calculator Web App
+# 💖 Love Evaluator Web App
 
 A fun and beautifully designed web application that calculates "love compatibility" based on names! Built with HTML, CSS, and JavaScript, this app includes animations, sound effects, and shareable results based on the score.
 
