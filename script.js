@@ -67,11 +67,18 @@ function playDing() {
   oscillator.stop(audioCtx.currentTime + 0.7);
 }
 function shareResult() {
-  const resultArea = document.getElementById("resultArea").textContent;
+  const name1 = document.getElementById("name1").value.trim();
+  const name2 = document.getElementById("name2").value.trim();
+  const resultText = document.getElementById("resultArea").textContent.trim();
+
+  const scoreMatch = resultText.match(/(\d+)%/);
+  const score = scoreMatch ? scoreMatch[1] : "??";
+
+  const shareMessage = `💖 Our Love Score is ${score}%!\n${name1} ❤️ ${name2}\n\nYou can check your love score too:\n👉 https://shubhamgode.github.io/Love-Evaluator`;
+
   const shareData = {
-    title: "Love Calculator Result",
-    text: `❤️ ${resultArea}\nLet's cherish our bond forever. 💫`,
-    url: window.location.href
+    title: "Love Score Calculator",
+    text: shareMessage
   };
 
   if (navigator.share) {
@@ -79,6 +86,19 @@ function shareResult() {
       .then(() => console.log('Shared successfully'))
       .catch(err => console.error('Share failed:', err));
   } else {
-    alert("❌ Sharing not supported on this device.");
+    // fallback for unsupported browsers
+    alert("❌ Sharing not supported on this device.\n\nCopy this message:\n\n" + shareMessage);
   }
 }
+window.onload = function() {
+  const params = new URLSearchParams(window.location.search);
+  const name1 = params.get("name1");
+  const name2 = params.get("name2");
+  const score = params.get("score");
+
+  if (name1 && name2 && score) {
+    document.getElementById("name1").value = name1;
+    document.getElementById("name2").value = name2;
+    document.getElementById("resultArea").textContent = `Love Score for ${name1} & ${name2} is ${score}% 💖`;
+  }
+};
