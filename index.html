@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Evaluator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container animate-pop">
+    <h1>💖 Love Evaluator 💖</h1>
+    <input type="text" id="name1" placeholder="Enter first name">
+    <input type="text" id="name2" placeholder="Enter second name">
+    <button id="calcBtn" onclick="calculateLove()">Calculate</button>
+    <div class="result" id="resultArea"></div>
+    <div class="message" id="loveMessage"></div>
+    <button id="shareBtn" style="display: none;" onclick="shareResult()">Share Result</button>
+  </div>
+  <audio id="loveSound" src="love.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
